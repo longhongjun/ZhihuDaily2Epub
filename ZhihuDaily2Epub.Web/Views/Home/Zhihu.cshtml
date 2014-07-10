@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "知乎日报下载";
+}
+
+<h2>知乎日报下载</h2>
+@{string[]
+    items = (string[]) ViewBag.Files;
+}
+<table>
+    @foreach (var item in items)
+    {
+        <tr>
+            <td><a href="/epub/@Path.GetFileName(item)">@Path.GetFileName(item)</a></td>
+        </tr>
+    }
+</table>
+    
