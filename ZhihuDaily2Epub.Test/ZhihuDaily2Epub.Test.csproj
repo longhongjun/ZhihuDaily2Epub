@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD09122E-9987-44E1-AC5E-9A24B07D230B}</ProjectGuid>
+    <ProjectGuid>{E6C07394-1F77-4AB3-A16F-CB463350A905}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ZhihuDaily2Epub.Test</RootNamespace>
     <AssemblyName>ZhihuDaily2Epub.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,11 +45,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ZhihuDaily2Epub\ZhihuDaily2Epub.csproj">
-      <Project>{239b14e7-616a-4396-9909-9a3ad090ae09}</Project>
+      <Project>{2bfadf84-f707-4b16-9b77-89a7158feb02}</Project>
       <Name>ZhihuDaily2Epub</Name>
     </ProjectReference>
   </ItemGroup>

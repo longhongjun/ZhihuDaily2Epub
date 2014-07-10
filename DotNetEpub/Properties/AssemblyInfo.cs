@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SharpEpub")]
-[assembly: AssemblyDescription("Create Epub file")]
+[assembly: AssemblyTitle("DotNetEpub")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DataArt©")]
-[assembly: AssemblyProduct("SharpEpub")]
-[assembly: AssemblyCopyright("Copyright by BkSlim ©  2011")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DotNetEpub")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("788d9e77-c1eb-425e-8806-69f6a6eba78c")]
+[assembly: Guid("90029e55-0850-4ee0-8ed0-028b6318fae4")]
 
 // Version information for an assembly consists of the following four values:
 //

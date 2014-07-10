@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using SharpEpub;
+using System.Text.RegularExpressions;
 
 namespace ZhihuDaily2Epub
 {
@@ -8,22 +8,45 @@ namespace ZhihuDaily2Epub
     {  
         public string Start()
         {
-            var date =  DownLoadHtml.Start();
+            var date =   DownLoadHtml.Start();
           var dir = WorkContext.Config.TempDir + date + "/";
-          Epub epub = new Epub(dir, TocOptions.ByTitleTag);
-          epub.Metadata.Creator = "向晚";
-          epub.Metadata.Publisher = "知乎";
-          epub.Metadata.Language = "zh-CN";
-          epub.Metadata.Date = DateTime.Now.ToString("yyyy-MM-dd");
-          epub.Metadata.Title = "知乎日报-"+date;
-          epub.Structure.Directories.ImageFolder = "image"; 
-          epub.DirectorySearchOption = SearchOption.AllDirectories;
-            var saveDir = WorkContext.Config.SaveDir;
-            if (!Directory.Exists(saveDir))
+ 
+          var epub = new Epub.Document(); 
+          // set metadata
+          epub.AddAuthor("xiangwan");
+        
+          epub.AddTitle("zhihu-daily-"+date);
+          epub.AddLanguage("zh");
+
+          // Add image files 
+            var images = Directory.GetFiles(dir + "image");
+            foreach (var image in images)
             {
-                Directory.CreateDirectory(saveDir);
+                epub.AddImageFile(image, "image\\"+Path.GetFileName(image));
+            } 
+
+          // add chapters' xhtml and setup TOC entries
+          int navCounter = 1;
+            var htmls = Directory.GetFiles(dir, "*.html");
+            foreach (var html in htmls)
+            {
+                var name = Path.GetFileName(html);
+                epub.AddXhtmlFile(html, name);
+                string text = File.ReadAllText(html);
+                string title = Regex.Match(text, "<title>\\s*.*\\s*</title>").Value;
+                title = Regex.Match(title, ">\\s*.*\\s*<").Value.Trim('>', '<', ' ', '\t', '\n');
+
+                epub.AddNavPoint(title, name, navCounter++);
             }
-            epub.BuildToFile(saveDir +"zhihu-daily-"+ date + ".epub");
+         
+          var saveDir = WorkContext.Config.SaveDir;
+          if (!Directory.Exists(saveDir))
+          {
+              Directory.CreateDirectory(saveDir);
+          }
+          // Generate resulting epub file
+          epub.Generate(saveDir + "zhihu-daily-" + date + ".epub"); 
+
            return "ok";
         }
     }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ZhihuDaily2Epub.Test
 {
@@ -10,7 +9,7 @@ namespace ZhihuDaily2Epub.Test
     {
         static void Main(string[] args)
         {
-           Executor exec=new Executor();
+            var exec = new Executor();
             exec.Start();
         }
     }
