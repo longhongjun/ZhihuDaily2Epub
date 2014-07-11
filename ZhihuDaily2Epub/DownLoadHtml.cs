@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using NLog;
 using ZhihuDaily2Epub.Helpers;
 using ZhihuDaily2Epub.Model;
 
@@ -60,7 +61,15 @@ namespace ZhihuDaily2Epub
                         {
                             var url = match.Groups[0].Value;
                             var name = match.Groups[2].Value;
-                            httpClient.DownloadFile(url, imageDir + name);
+                            try
+                            {
+                                httpClient.DownloadFile(url, imageDir + name);
+                            }
+                            catch (Exception e)
+                            { 
+                                LogManager.GetCurrentClassLogger().Error(e);
+                            }
+                          
                         }
                         htmlBody = regex.Replace(htmlBody, "image/$2");
                     }

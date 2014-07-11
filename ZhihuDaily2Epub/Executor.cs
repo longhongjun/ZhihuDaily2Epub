@@ -55,8 +55,7 @@ namespace ZhihuDaily2Epub
             }
             catch (Exception e)
             {
-                logger.Error(e);
-                throw;
+                logger.Error(e); 
             }
             return "ok";
         }
